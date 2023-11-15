@@ -14,18 +14,17 @@ Student.prototype.setSubject = function(subjectName) {
 }
 
 Student.prototype.addMarks = function(...marks) {
-	if (marks.length === 0) {
+	if (!this.hasOwnProperty("marks")) {
 		return 0;
 	}
 	this.marks.push(...marks);
 }
 
 Student.prototype.getAverage = function() {
-	if (this.marks.length === 0) {
+	if (!this.hasOwnProperty("marks") || (this.marks.length === 0)) {
 		return 0;
 	}
-	this.average = this.marks.reduce((acc, item) => acc += item, 0) / this.marks.length;
-	return this.average;
+	return this.marks.reduce((acc, item) => acc += item, 0) / this.marks.length;
 }
 
 Student.prototype.exclude = function(reason) {
