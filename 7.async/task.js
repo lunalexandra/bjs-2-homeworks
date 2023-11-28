@@ -1,5 +1,5 @@
 class AlarmClock {
-	constructor(){
+	constructor() {
 		this.alarmCollection = [];
 		this.intervalId = null;
 	}
@@ -10,7 +10,6 @@ class AlarmClock {
 		}
 		if (this.alarmCollection.some((item) => item.time === time)) {
 			console.warn('Уже присутствует звонок на это же время');
-			return;
 		}
 		this.alarmCollection.push({
 			time,
@@ -24,8 +23,10 @@ class AlarmClock {
 	}
 
 	getCurrentFormattedTime() {
-		let currentTime = new Date();
-		return (`${currentTime.getHours()}:${currentTime.getMinutes()}`);
+		return new Date().toLocaleTimeString("ru-Ru", {
+			hour: "2-digit",
+			minute: "2-digit",
+		});
 	}
 
 	start() {
